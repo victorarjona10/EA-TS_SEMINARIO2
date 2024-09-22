@@ -1,12 +1,10 @@
-// tsc basic_types.ts
-// node basic_types.ts
 
 let aCounter; // unkwnow (any) type
 let bCounter = 0; // number(inferred)
 let cCounter: number; //number
 let dCounter: number = 0; //number
 
-// Primtiive types are the most basic types
+// Primitive types are the most basic types
 let myName: string = "Aaron"; // strings
 let height: number = 1.78; // numbers: floting point numbers
 let isDone: boolean = true; // boolean

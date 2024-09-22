@@ -1,7 +1,7 @@
 # EA-JS
 
 
-Installar Typescript
+Instalar Typescript
 ```
 npm install -g typescript
 ```
