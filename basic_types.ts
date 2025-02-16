@@ -8,55 +8,55 @@ let height: number = 1.78; // numbers: floting point numbers
 let isDone: boolean = true; // boolean
 
 let aCounter; // unkwnow (any) type
-let bCounter = 0; // number(inferred)
+let bCounter = 0; // number (inferred)
 let cCounter: number; //number
 let dCounter: number = 0; //number
 
-// Union Types
-let id: number | string;
-id = 10;
-id = "11";
-
-//  Type assertions
-let someValue: any = "Hello, TypeScript!";
-let strLength: number = (someValue as string).length;
-console.log(strLength); 
-
-let anotherValue: number | string = "Learning TypeScript";
-let anotherStrLength: number = (<string>anotherValue).length;
-console.log(anotherStrLength);  
-
-
-// Arrays of types
-const listOfNotes: number[] = [7, 10, 4];
-const listOfNotes2: Array<number> = [12, 12, 12];
-
-const listOfStrings: string[] = ["hello", "how are you"];
-const listOfStrings2: Array<string> = ["hola", "que tal"];
-
-const listOfBooleans: boolean[] = [true, false, true];
-const listOfBooleans2: Array<boolean> = [true, false, true];
-
-
-// Tuples
-let strNumTuple: [string, number];
-strNumTuple = ["Hello", 1000];
-
-
-// Any - all types in ts are subtypes of 'Any Type'
+// Any 
 let anyData: any = 1;
 anyData = true;
 anyData = "maybe a string instead";
 
-let listOfAny: any[] = [1, true, "free"];
-listOfAny[1] = 100;
+// Union Types
+let id: number | string;
+id = 10;
+console.log(typeof id, id); // number
+id = "11";
+console.log(typeof id, id); // string
 
+//  Type assertions
+let someValue: any;
+someValue = "Hello, TypeScript!";
+let strLength: number = (someValue as string).length;
+
+let anotherValue: number | string;
+anotherValue = "Learning TypeScript";
+let anotherStrLength: number = (<string>anotherValue).length;
+
+// Arrays of types
+const listOfNotes: number[] = [7, 10, 4];
+const listOfNotes2: Array<number> = [12, 12, 12];
+console.log(typeof listOfNotes, listOfNotes); // JSON object
+console.log(typeof listOfNotes2, listOfNotes2); // JSON object
+
+const listOfStrings: string[] = ["hello", "how are you"];
+const listOfStrings2: Array<string> = ["hola", "que tal"];
+
+const listOfAny: any[] = [1, true, "free"];
+listOfAny[1] = 100;
+console.log(listOfAny); // JSON object
+
+// Tuples
+let strNumTuple: [string, number];
+strNumTuple = ["Hello", 1000];
+console.log(typeof strNumTuple, strNumTuple); // JSON object
 
 // Functions
-
-function greets(name: string): string {
-  return `Hello + ${name}`;
+function greets(name: string = "Roc"): string {
+  return `Hello ${name}`;
 }
+
+console.log(greets()) 
 
 //optional parameter
 function addThree(x: number, y: number, z?: number): number {
@@ -66,9 +66,12 @@ function addThree(x: number, y: number, z?: number): number {
   return x + y;
 }
 
+console.log(addThree(1,2,3)) 
+console.log(addThree(1,2)) 
+
 // JSON Objects
 
-// type
+/// type
 type Task = {
   id: string | number
   title: string
@@ -80,9 +83,9 @@ const task: Task = {
   title: "My Title",
   completed: true
 }
+console.log(typeof task, task); // JSON object
 
-
-// interface
+/// interface
 interface Product {
   name: string;
   readonly price: number; // readonly is a modifier
@@ -95,13 +98,37 @@ const product: Product = {
   description: "good laptop",
 };
 
+console.log(typeof product, product); // JSON object
 
 // enums
 
 enum Status {
-  Success = "SUCCESS",
-  Failure = "FAILURE",
-  Pending = "PENDING"
+  Activo,     // 0
+  Inactivo,   // 1
+  Pendiente   // 2
 }
 
-let currentStatus: Status = Status.Success;
+let estadoActual: Status = Status.Activo;
+console.log(estadoActual); // 0
+console.log(Status[0]);    // "Activo"
+
+
+enum HttpStatus {
+  OK = 200,
+  NotFound = 404,
+  InternalServerError = 500
+}
+
+console.log(HttpStatus.OK);       // 200
+console.log(HttpStatus[404]);     // "NotFound"
+
+
+enum RolUsuario {
+  Admin = "ADMIN",
+  Editor = "EDITOR",
+  Usuario = "USUARIO"
+}
+
+let rol: RolUsuario = RolUsuario.Admin;
+console.log(rol); // "ADMIN"
+
