@@ -17,6 +17,24 @@ let anyData: any = 1;
 anyData = true;
 anyData = "maybe a string instead";
 
+// Functions
+function greets(name: string = "Roc"): string {
+  return `Hello ${name}`;
+}
+
+console.log(greets()) 
+
+/// function with optional parameter
+function addThree(x: number, y: number, z?: number): number {
+  if (z !== undefined) {
+    return x + y + z;
+  }
+  return x + y;
+}
+
+console.log(addThree(1,2,3)) 
+console.log(addThree(1,2)) 
+
 // Union Types
 let id: number | string;
 id = 10;
@@ -50,24 +68,6 @@ console.log(listOfAny); // JSON object
 let strNumTuple: [string, number];
 strNumTuple = ["Hello", 1000];
 console.log(typeof strNumTuple, strNumTuple); // JSON object
-
-// Functions
-function greets(name: string = "Roc"): string {
-  return `Hello ${name}`;
-}
-
-console.log(greets()) 
-
-//optional parameter
-function addThree(x: number, y: number, z?: number): number {
-  if (z !== undefined) {
-    return x + y + z;
-  }
-  return x + y;
-}
-
-console.log(addThree(1,2,3)) 
-console.log(addThree(1,2)) 
 
 // JSON Objects
 
