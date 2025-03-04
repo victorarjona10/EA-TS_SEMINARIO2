@@ -16,3 +16,6 @@ Ejecutar JS
 ```
 node basic_types.js
 ```
+
+
+Las referencias usadas para hacer el ejecicio ha sido unicamente copilot. Para poder entender el codigo, la lógica funciones etc.
